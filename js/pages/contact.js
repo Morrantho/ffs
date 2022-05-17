@@ -1,0 +1,11 @@
+ffs(d=>
+`
+	${nav()}
+	${container
+	({
+		html:_=>
+		`
+			${h1({html:_=>`Contact`,class:_=>`text-center`})}
+		`
+	})}
+`,`contact`,`/contact`);
