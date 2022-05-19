@@ -1,9 +1,8 @@
-ffs.include(`./js/tags/categoryitem.js`);
-
-ffs.tag(`root`,``,(self,attrs,children)=>
-{
-	return self({},
+ffs.tag(`root`,``,(self,attrs,children)=>self
+({},
+[
+	container({},
 	[
-		p({textContent:"Hello World"})
-	]);
-});
+		card({title:"Card"},[p({textContent:`Card Body`})])
+	])
+]));

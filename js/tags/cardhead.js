@@ -1,0 +1,9 @@
+ffs.tag(`cardhead`,0,(self,attrs)=>self
+({},
+[
+	h1
+	({
+		textContent:attrs.title,
+		style:``
+	})
+]));

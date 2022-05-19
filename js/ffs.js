@@ -20,26 +20,26 @@ ffs.tag=(name,route,fn)=>
 	window[name]=(attrs,children)=>fn((_attrs,_children)=>ffs.create(name,_attrs,_children),attrs,children);
 	ffs.routes[`#${route}`]=window[name];
 }
-ffs.goto=(route)=>document.body.replaceChildren(ffs.parseroute(route));
-addEventListener(`hashchange`,(e)=>ffs.goto(location.hash||`#`));
+ffs.goto=route=>document.body.replaceChildren(ffs.parseroute(route));
+addEventListener(`hashchange`,_=>ffs.goto(location.hash||`#`));
 ffs.parseroute=(url)=>
 {
-	if(ffs.routes[url]) return ffs.routes[url]();
+	if(ffs.routes[url])return ffs.routes[url]();
 	let url_slashes=url.split("/");
 	for(let route in ffs.routes)
 	{
 		let route_slashes=route.split("/");
-		if(url_slashes.length!=route_slashes.length) continue;
+		if(url_slashes.length!=route_slashes.length)continue;
 		let params={};
 		let matches=0;
 		for(let i=0;i<url_slashes.length;i++)
 		{
 			let param=route_slashes[i].split(`:`)[1];
-			if((route_slashes[i]!=url_slashes[i])&&!param) break;
+			if((route_slashes[i]!=url_slashes[i])&&!param)break;
 			if(param)params[param]=url_slashes[i];
 			matches++;
 		}
-		if(matches==route_slashes.length) return ffs.routes[route](params);
+		if(matches==route_slashes.length)return ffs.routes[route](params);
 		matches=0;
 	}
 }
