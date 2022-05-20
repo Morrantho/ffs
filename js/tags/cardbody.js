@@ -1,1 +1,0 @@
-ffs.tag(`cardbody`,0,(self,attrs,children)=>self({},children));

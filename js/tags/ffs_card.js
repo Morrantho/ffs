@@ -1,0 +1,11 @@
+ffs.tag(`ffs_card`,_,(tag,attrs={},children=[])=>tag
+({
+	style:
+	`
+		padding:var(--interval-2);
+	`
+},
+[
+	ffs_cardhead({title:attrs.title}),
+	ffs_cardbody(_,children)
+]));

@@ -1,0 +1,15 @@
+ffs.tag(`ffs_cardhead`,_,(tag,attrs={},children=[])=>tag
+({
+	style:
+	`
+		padding:var(--interval-2);
+		background-color:var(--col-blue);
+	`
+},
+[
+	h1
+	({
+		textContent:attrs.title,
+		style:``
+	})
+]));

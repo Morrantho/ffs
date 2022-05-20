@@ -14,8 +14,8 @@
 :root
 {
 	--col-primary-1:rgb(16,16,28);
-	--col-primary-2:rgb(20,20,32);
-	--col-primary-3:rgb(24,24,36);
+	--col-primary-2:rgb(24,24,36);
+	--col-primary-3:rgb(32,32,45);
 
 	--col-white-1:rgb(255,255,255);
 	--col-white-2:rgb(255,255,255);
@@ -36,31 +36,11 @@
 	--interval-6:48px;
 	--interval-7:56px;
 	--interval-8:64px;
-}
 
-root
-{
-	display: block;
-}
-
-card
-{
-	display: block;
-}
-
-cardhead
-{
-	color:var(--col-white-1);
-}
-
-cardbody
-{
-	display: block;
-}
-
-container
-{
-	display: block;
-	width:70%;
-	margin:0 auto;
+	--wgt-100:100;
+	--wgt-300:300;
+	--wgt-400:400;
+	--wgt-500:500;
+	--wgt-700:700;
+	--wgt-900:900;
 }

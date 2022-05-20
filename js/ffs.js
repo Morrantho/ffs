@@ -1,19 +1,21 @@
-ffs={routes:{}}
-ffs.vanilla=["p","h1","h2","h3","div","img","a","span","input","select","option","details","summary","button","form"];
-ffs.include=async src=>
+_=null;
+ffs={routes:{}};
+ffs.include=src=>new Promise((res,rej)=>
 {
-	let e=document.createElement("script");
-	e.type="text/javascript";
+	let e=document.createElement(`script`);
+	e.type=`text/javascript`;
 	e.src=src;
-	e.async=true;
+	e.onload=res;
+	e.onerror=rej;
 	document.head.appendChild(e);
-}
-ffs.create=(t,attrs={},children=[])=>
+});
+ffs.create=(tag,attrs={},children=[])=>
 {
-	let e=document.createElement(t);
-	for(let attr in attrs) e[attr]=attrs[attr];
-	for(let child of children)e.appendChild(child);
-	return e;
+	let element=document.createElement(tag);
+	for(let attr in attrs) element[attr]=attrs[attr];
+	for(let child of children)element.appendChild(child);
+	element.style=`${attrs.style} display:grid;`;
+	return element;
 }
 ffs.tag=(name,route,fn)=>
 {
@@ -25,10 +27,10 @@ addEventListener(`hashchange`,_=>ffs.goto(location.hash||`#`));
 ffs.parseroute=(url)=>
 {
 	if(ffs.routes[url])return ffs.routes[url]();
-	let url_slashes=url.split("/");
+	let url_slashes=url.split(`/`);
 	for(let route in ffs.routes)
 	{
-		let route_slashes=route.split("/");
+		let route_slashes=route.split(`/`);
 		if(url_slashes.length!=route_slashes.length)continue;
 		let params={};
 		let matches=0;
@@ -43,25 +45,21 @@ ffs.parseroute=(url)=>
 		matches=0;
 	}
 }
-ffs.req=async(url,method,data)=>
+ffs.req=(url,method,data)=>new Promise((resolve,reject)=>
 {
-	try
-	{
-		let res=await fetch(url,
-		{
-			method:method,
-			body:JSON.stringify(data),
-			headers:{"Content-type":"application/json; charset=UTF-8"}
-		});
-		try
-		{
-			return await res.json();
-		}catch(e){console.log(e);}
-	}catch(e){console.log(e);}
-}
-onload=()=>
+	fetch(url,
+	{	
+		method:method,
+		body:JSON.stringify(data),
+		headers:{"Content-type":`application/json; charset=UTF-8`}
+	})
+	.then(response=>response.json())
+	.then(response=>resolve(response))
+	.catch(error=>reject(error));
+});
+ffs.init=()=>
 {
-	for(let i of ffs.vanilla) window[i]=(attrs,children)=>ffs.create(i,attrs,children);
+	for(let tag of ffs.tags) window[tag]=(attrs,children)=>ffs.create(tag,attrs,children);
 	location.hash=location.hash||`#`;
 	ffs.goto(location.hash||`#`);
 }

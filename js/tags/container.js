@@ -1,1 +1,0 @@
-ffs.tag(`container`,0,(self,attrs,children)=>self({},children));

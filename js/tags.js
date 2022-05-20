@@ -1,0 +1,21 @@
+ffs.tags=
+[
+	`p`,
+	`h1`,
+	`h2`,
+	`h3`,
+	`h4`,
+	`h5`,
+	`h6`,
+	`div`,
+	`img`,
+	`a`,
+	`span`,
+	`input`,
+	`select`,
+	`option`,
+	`details`,
+	`summary`,
+	`button`,
+	`form`
+];
