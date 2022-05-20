@@ -11,22 +11,29 @@ ffs.include=src=>new Promise((res,rej)=>
 });
 ffs.create=(tag,attrs={},children=[])=>
 {
+	if(ffs.debug) console.log(`%cFFS | Create | ${tag}`,`color:rgb(46, 204, 113)`,attrs,children);
 	let element=document.createElement(tag);
 	for(let attr in attrs) element[attr]=attrs[attr];
 	for(let child of children)element.appendChild(child);
-	element.style=`${attrs.style} display:grid;`;
+	element.style=attrs.style?"display:grid; "+attrs.style:"display: grid;";
 	return element;
 }
-ffs.tag=(name,route,fn)=>
+ffs.tag=(name,fn)=>
 {
+	if(ffs.debug) console.log(`%cFFS | Tag | ${name}`,`color:rgb(52, 152, 219)`);
 	window[name]=(attrs,children)=>fn((_attrs,_children)=>ffs.create(name,_attrs,_children),attrs,children);
-	ffs.routes[`#${route}`]=window[name];
 }
-ffs.goto=route=>document.body.replaceChildren(ffs.parseroute(route));
+ffs.route=(route,fn)=>
+{
+	if(ffs.debug) console.log(`%cFFS | Route | "${route}"`,`color:rgb(155, 89, 182);`);
+	ffs.routes[`#${route}`]=fn;
+}
+ffs.goto=route=>document.body.replaceChildren(root({},ffs.parseroute(route)));
 addEventListener(`hashchange`,_=>ffs.goto(location.hash||`#`));
 ffs.parseroute=(url)=>
 {
-	if(ffs.routes[url])return ffs.routes[url]();
+	if(ffs.debug) console.log(`%cFFS | ParseRoute | "${url}"`,`color:rgb(155, 89, 182);`);
+	if(ffs.routes[url]) return ffs.routes[url]({},[]);
 	let url_slashes=url.split(`/`);
 	for(let route in ffs.routes)
 	{
@@ -41,12 +48,13 @@ ffs.parseroute=(url)=>
 			if(param)params[param]=url_slashes[i];
 			matches++;
 		}
-		if(matches==route_slashes.length)return ffs.routes[route](params);
+		if(matches==route_slashes.length) return ffs.routes[route](params,[]);
 		matches=0;
 	}
 }
 ffs.req=(url,method,data)=>new Promise((resolve,reject)=>
 {
+	if(ffs.debug) console.log(`%cFFS | Request | "${url}" "${method}"`,`color:rgb(230, 126, 34);`);
 	fetch(url,
 	{	
 		method:method,
@@ -57,8 +65,9 @@ ffs.req=(url,method,data)=>new Promise((resolve,reject)=>
 	.then(response=>resolve(response))
 	.catch(error=>reject(error));
 });
-ffs.init=()=>
+ffs.init=_=>
 {
+	if(ffs.debug) console.log(`FFS | Init`);
 	for(let tag of ffs.tags) window[tag]=(attrs,children)=>ffs.create(tag,attrs,children);
 	location.hash=location.hash||`#`;
 	ffs.goto(location.hash||`#`);

@@ -1,4 +1,4 @@
-ffs.tag(`ffs_cardhead`,_,(tag,attrs={},children=[])=>tag
+ffs.tag(`cardhead`,(tag,attrs={},children=[])=>tag
 ({
 	style:
 	`

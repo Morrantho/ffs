@@ -1,0 +1,1 @@
+gcc -Ofast ffs.c -o ffs

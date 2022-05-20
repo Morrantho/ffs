@@ -1,0 +1,15 @@
+ffs.tag(`link`,(self,attrs,children)=>a
+(
+	{
+		style:
+		`
+			text-decoration:none;
+			color:var(--col-white-1);
+			font-weight:var(--wgt-900);
+		`,
+		pee:`poo`,
+		className:`col-h-blue`,
+		textContent:attrs.text,
+		href:attrs.to
+	}
+));

@@ -17,5 +17,6 @@ ffs.tags=
 	`details`,
 	`summary`,
 	`button`,
-	`form`
+	`form`,
+	`nav`
 ];

@@ -1,4 +1,4 @@
-ffs.tag(`ffs_input`,_,(tag,attrs={input:{},p:{}},children=[])=>tag
+ffs.tag(`ffs_input`,(tag,attrs={input:{},p:{}},children=[])=>tag
 ({
 	style:
 	`

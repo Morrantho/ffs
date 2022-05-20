@@ -1,0 +1,11 @@
+ffs.tag(`card`,(tag,attrs={},children=[])=>tag
+({
+	style:
+	`
+		padding:var(--interval-2);
+	`
+},
+[
+	cardhead({title:attrs.title}),
+	cardbody(_,children)
+]));

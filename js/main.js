@@ -1,9 +1,0 @@
-ffs.include(`./js/tags.js`)
-.then(_=>ffs.include(`./js/tags/ffs_container.js`))
-.then(_=>ffs.include(`./js/tags/ffs_cardhead.js`))
-.then(_=>ffs.include(`./js/tags/ffs_cardbody.js`))
-.then(_=>ffs.include(`./js/tags/ffs_card.js`))
-.then(_=>ffs.include(`./js/tags/ffs_input.js`))
-.then(_=>ffs.include(`./js/tags/ffs_root.js`))
-.then(_=>ffs.init())
-.catch(e=>console.log(e));
