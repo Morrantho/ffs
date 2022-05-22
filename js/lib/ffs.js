@@ -11,7 +11,7 @@ ffs.include=src=>new Promise((res,rej)=>
 });
 ffs.create=(tag,attrs={},children=[])=>
 {
-	if(ffs.debug) console.log(`%cFFS | Create | ${tag}`,`color:rgb(46, 204, 113)`,attrs,children);
+	if(ffs.debug) console.log(`%cFFS | Create | ${tag}`,`color:rgb(46, 204, 113)`);
 	let element=document.createElement(tag);
 	for(let attr in attrs) element[attr]=attrs[attr];
 	for(let child of children)element.appendChild(child);

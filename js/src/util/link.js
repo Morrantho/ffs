@@ -1,15 +1,13 @@
 ffs.tag(`link`,(self,attrs,children)=>a
-(
-	{
-		style:
-		`
-			text-decoration:none;
-			color:var(--col-white-1);
-			font-weight:var(--wgt-900);
-		`,
-		pee:`poo`,
-		className:`col-h-blue`,
-		textContent:attrs.text,
-		href:attrs.to
-	}
-));
+({
+	style:
+	`
+		text-decoration:none;
+		color:var(--col-white-1);
+		font-weight:var(--wgt-900);
+	`,
+	onmouseover:e=>e.target.style.color=`var(--col-red)`,
+	onmouseout:e=>e.target.style.color=`var(--col-white-1)`,
+	textContent:attrs.text,
+	href:attrs.to
+},children));

@@ -6,6 +6,7 @@ ffs.util=async()=>
 	.then(_=>ffs.include(`./js/src/util/card.js`))
 	.then(_=>ffs.include(`./js/src/util/link.js`))
 	.then(_=>ffs.include(`./js/src/util/ffs_h1.js`))
+	.then(_=>ffs.include(`./js/src/util/ffs_p.js`))
 	.then(_=>ffs.include(`./js/src/util/ffs_input.js`))
 	.then(_=>ffs.include(`./js/src/util/ffs_nav.js`))
 	.then(_=>ffs.include(`./js/src/util/ffs_footer.js`))
