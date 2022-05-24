@@ -10,5 +10,6 @@ ffs.util=async()=>
 	.then(_=>ffs.include(`./js/src/util/ffs_input.js`))
 	.then(_=>ffs.include(`./js/src/util/ffs_nav.js`))
 	.then(_=>ffs.include(`./js/src/util/ffs_footer.js`))
+	.then(_=>ffs.include(`./js/src/util/editor.js`))
 	.catch(e=>console.log(e));
 }

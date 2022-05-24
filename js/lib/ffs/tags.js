@@ -14,6 +14,7 @@ ffs.tags=
 	`input`,
 	`select`,
 	`option`,
+	`textarea`,
 	`details`,
 	`summary`,
 	`button`,

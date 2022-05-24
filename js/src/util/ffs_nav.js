@@ -7,8 +7,8 @@ ffs.tag(`ffs_nav`,(self,attrs,children)=>self
 	`
 },
 [
-	div(
-	{
+	div
+	({
 		style:
 		`
 			width:70%;
